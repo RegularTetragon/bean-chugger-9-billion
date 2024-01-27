@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcv7np61axt6c"]
+
+[ext_resource type="PackedScene" uid="uid://biae2fw5qdl4k" path="res://models/bean.dae" id="1_1hg55"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wsi18"]
+radius = 0.188601
+
+[node name="Node3D" type="RigidBody3D"]
+
+[node name="bean" parent="." instance=ExtResource("1_1hg55")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_wsi18")
