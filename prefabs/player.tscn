@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbx355ccjnhby"]
+
+[ext_resource type="PackedScene" uid="uid://bd7n6nsfbjim3" path="res://models/player.blend" id="1_jk57q"]
+[ext_resource type="PackedScene" uid="uid://by6gw24nk4htc" path="res://models/bean-rifle.blend" id="2_j51xc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7adv7"]
+radius = 0.247341
+height = 1.11712
+
+[node name="Player" type="CharacterBody3D"]
+
+[node name="ThirdPerson" parent="." instance=ExtResource("1_jk57q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.205, 0)
+visible = false
+
+[node name="Skeleton3D" parent="ThirdPerson/Armature" index="0"]
+bones/1/rotation = Quaternion(-0.0195733, 0, 0, 0.999808)
+bones/2/rotation = Quaternion(-0.0834225, 0.0248364, -0.00983146, 0.996156)
+bones/3/rotation = Quaternion(-0.417973, -0.104559, 0.716511, 0.548615)
+bones/4/rotation = Quaternion(-0.560852, 0.426146, -0.277834, 0.653187)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.22162, 0.863961, 0.434481, 0.125231)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.0269438, 7.39082e-08, 0.0447525, 0.998635)
+bones/7/rotation = Quaternion(-0.427483, 0.00547007, -0.668917, 0.608094)
+bones/8/rotation = Quaternion(-0.223671, -0.325816, 0.502818, 0.768758)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.129885, 0.813057, 0.0331431, 0.566542)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.0269438, -7.39082e-08, -0.0447525, 0.998635)
+bones/11/rotation = Quaternion(-0.135667, 4.26831e-09, 0.872779, 0.468883)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(0.275755, 0.103401, 0.48425, 0.823875)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(-0.0136392, -4.6584e-08, -0.0205424, 0.999696)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/rotation = Quaternion(-0.69374, -1.89173e-06, -0.137593, 0.70696)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(0.135667, 4.26831e-09, 0.872779, -0.468883)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(-0.364402, 0.287014, -0.305028, 0.83174)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(0.474544, -0.0623864, -0.0428535, 0.876972)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(-0.69374, 1.89173e-06, 0.137593, 0.70696)
+bones/18/scale = Vector3(1, 1, 1)
+
+[node name="Cube" parent="ThirdPerson/Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.135361, 0)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="ThirdPerson/Armature/Skeleton3D" index="1"]
+transform = Transform3D(-0.649708, 0.0816504, 0.755786, -0.754153, 0.0557511, -0.654328, -0.0955618, -0.995101, 0.025355, 0.138803, 0.833882, -0.542237)
+bone_name = "hand.r"
+bone_idx = 10
+
+[node name="bean-rifle" parent="ThirdPerson/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("2_j51xc")]
+transform = Transform3D(0.168125, -0.757699, -0.630579, 0.985485, 0.14441, 0.0892291, 0.0234532, -0.636428, 0.770981, 0.0790498, -0.253159, 0.00429219)
+
+[node name="AnimationPlayer" parent="ThirdPerson" index="1"]
+playback_default_blend_time = 0.5
+
+[node name="FirstPerson" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="bean-rifle" parent="FirstPerson" instance=ExtResource("2_j51xc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.176, -0.185, -0.17)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.558965, 0)
+shape = SubResource("CapsuleShape3D_7adv7")
+
+[editable path="ThirdPerson"]

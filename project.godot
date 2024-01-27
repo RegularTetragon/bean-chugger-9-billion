@@ -10,11 +10,11 @@ config_version=5
 
 [application]
 
-config/name="bean-muncher-9billion"
-run/main_scene="res://level.tscn"
+config/name="bean-chugger-9billion"
+run/main_scene="res://root-scene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/qodot/plugin.cfg")
