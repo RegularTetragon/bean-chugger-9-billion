@@ -5,6 +5,7 @@ var character : Node3D
 var peer_id : int
 var client : NetworkClient
 
+
 @rpc("authority", "reliable")
 func spawn_character():
 	character = local_character_prefab.instantiate()

@@ -1,4 +1,5 @@
 extends Node
+class_name PlayerRemote
 
 @export var remote_character_prefab : PackedScene
 var character : Node3D

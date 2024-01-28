@@ -1,6 +1,8 @@
 extends CharacterBody3D
 var xrot : float
 var yrot : float
+var player : PlayerRemote
+@export var prefab_bean : PackedScene
 func _ready():
 	$ThirdPerson/AnimationPlayer.play("Idleloop")
 	
@@ -21,6 +23,10 @@ func begin_shoot():
 func end_shoot():
 	pass
 
+@rpc("reliable", "authority")		
+func sync_died():
+	queue_free()
+
 @rpc("reliable", "authority")
-func s2c_shoot_bean(position, velocity):
+func sync_health(health):
 	pass

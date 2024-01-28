@@ -9,7 +9,7 @@
 radius = 0.247341
 height = 1.11712
 
-[node name="Character" type="CharacterBody3D"]
+[node name="Character2" type="CharacterBody3D"]
 script = ExtResource("1_78qkm")
 prefab_bean = ExtResource("2_vb5dm")
 
@@ -52,7 +52,7 @@ bones/18/scale = Vector3(1, 1, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.135361, 0)
 
 [node name="RightHand" type="BoneAttachment3D" parent="ThirdPerson/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.649708, 0.0816505, 0.755786, -0.754035, 0.0569736, -0.654358, -0.0964885, -0.995031, 0.0245511, 0.138803, 0.834806, -0.529297)
+transform = Transform3D(-0.649708, 0.0816505, 0.755786, -0.754035, 0.0569737, -0.654358, -0.0964885, -0.995031, 0.0245512, 0.138803, 0.834806, -0.529297)
 bone_name = "hand.r"
 bone_idx = 10
 

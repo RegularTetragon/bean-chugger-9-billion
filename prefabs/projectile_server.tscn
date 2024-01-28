@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bidpanowj23d2"]
+[gd_scene load_steps=4 format=3 uid="uid://bidpanowj23d2"]
 
 [ext_resource type="PackedScene" uid="uid://qj1ogb8looh8" path="res://models/bean.blend" id="1_b8vka"]
+[ext_resource type="Script" path="res://scripts/ProjectileServer.gd" id="1_eqm2q"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xhckc"]
 radius = 0.191275
 
 [node name="ServerProjectile" type="RigidBody3D"]
+max_contacts_reported = 2
+contact_monitor = true
+script = ExtResource("1_eqm2q")
 
 [node name="bean" parent="." instance=ExtResource("1_b8vka")]
 

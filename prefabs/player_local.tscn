@@ -1,8 +1,60 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjca33npwuuqe"]
+[gd_scene load_steps=4 format=3 uid="uid://cjca33npwuuqe"]
 
 [ext_resource type="Script" path="res://scripts/PlayerLocal.gd" id="1_ge0fq"]
 [ext_resource type="PackedScene" uid="uid://du1ck56xhg2dj" path="res://prefabs/character_local.tscn" id="2_8idvs"]
+[ext_resource type="Script" path="res://scripts/PlayerGui.gd" id="3_nrwlx"]
 
 [node name="LocalPlayer" type="Node"]
 script = ExtResource("1_ge0fq")
 local_character_prefab = ExtResource("2_8idvs")
+
+[node name="PlayerGui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_nrwlx")
+
+[node name="Health" type="Label" parent="PlayerGui"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_type_variation = &"HeaderLarge"
+text = "Health 100"
+
+[node name="Paused" type="Panel" parent="PlayerGui"]
+visible = false
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerGui/Paused"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PlayerGui/Paused/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Menu"
+
+[node name="Quit" type="Button" parent="PlayerGui/Paused/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="PlayerGui/Paused/VBoxContainer/Quit" to="PlayerGui" method="quit"]

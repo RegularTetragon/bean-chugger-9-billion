@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://n20bt3b2xy4a"]
-
-[node name="ClientToServerRemote" type="Node"]
-
-[node name="Node" type="Node" parent="."]

@@ -17,7 +17,7 @@ sky = SubResource("Sky_jp6j4")
 radius = 0.247341
 height = 1.11712
 
-[node name="Character" type="CharacterBody3D"]
+[node name="Character2" type="CharacterBody3D"]
 script = ExtResource("1_etuaf")
 prefab_bean = ExtResource("2_ubc5y")
 

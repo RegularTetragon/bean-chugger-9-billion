@@ -6,9 +6,6 @@ var respawn_timer = respawn_time
 var character : Node3D
 var server : NetworkServer
 var peer_id : int
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	spawn_character()
 
 
 @rpc("authority", "reliable")
