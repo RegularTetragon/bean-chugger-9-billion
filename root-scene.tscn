@@ -1,12 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjev5l5wna8dp"]
+[gd_scene load_steps=7 format=3 uid="uid://cjev5l5wna8dp"]
 
 [ext_resource type="Texture2D" uid="uid://10t0mkhkxmsc" path="res://shelley-pauls-t4X660oKiYs-unsplash.jpg" id="1_0q6nu"]
+[ext_resource type="Script" path="res://ConnectForm.gd" id="2_50lfq"]
+[ext_resource type="Script" path="res://scripts/NetworkController.gd" id="2_cvy7m"]
+[ext_resource type="Script" path="res://scripts/FormHost.gd" id="2_oxywn"]
+[ext_resource type="PackedScene" uid="uid://dqjs3auy0nb25" path="res://prefabs/server.tscn" id="3_7xkmv"]
+[ext_resource type="PackedScene" uid="uid://cjke1rly4fgew" path="res://prefabs/client.tscn" id="4_dhpoy"]
 
-[node name="Root-scene" type="Node3D"]
+[node name="Root-scene" type="Node"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -68,7 +74,50 @@ text = "Connect"
 layout_mode = 2
 text = "Host"
 
-[node name="Connect" type="Panel" parent="CanvasLayer"]
+[node name="Error" type="Panel" parent="CanvasLayer"]
+visible = false
+custom_minimum_size = Vector2(480, 240)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -120.0
+offset_right = 240.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Error"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ConnectLabel" type="Label" parent="CanvasLayer/Error/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "An Error Occurred"
+horizontal_alignment = 1
+
+[node name="Error" type="RichTextLabel" parent="CanvasLayer/Error/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HeaderSmall"
+text = "Error text"
+
+[node name="Button" type="Button" parent="CanvasLayer/Error/VBoxContainer"]
+layout_mode = 2
+text = "Okie :("
+
+[node name="Connect" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("controller")]
 visible = false
 custom_minimum_size = Vector2(480, 240)
 anchors_preset = 8
@@ -80,6 +129,8 @@ offset_left = -240.0
 offset_right = 240.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_50lfq")
+controller = NodePath("../../NetworkController")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Connect"]
 layout_mode = 1
@@ -111,9 +162,21 @@ text = "Address"
 [node name="Address" type="LineEdit" parent="CanvasLayer/Connect/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "localhost"
 placeholder_text = "beans.regulartetragon.com:6969"
 
-[node name="Button" type="Button" parent="CanvasLayer/Connect/VBoxContainer"]
+[node name="Label2" type="Label" parent="CanvasLayer/Connect/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Port
+"
+
+[node name="Port" type="LineEdit" parent="CanvasLayer/Connect/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "6969"
+placeholder_text = "6969"
+
+[node name="Connect" type="Button" parent="CanvasLayer/Connect/VBoxContainer"]
 layout_mode = 2
 text = "Connect"
 
@@ -122,7 +185,7 @@ layout_mode = 2
 text = "Cancel
 "
 
-[node name="Host" type="Panel" parent="CanvasLayer"]
+[node name="Host" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("controller")]
 visible = false
 custom_minimum_size = Vector2(480, 240)
 anchors_preset = 8
@@ -134,6 +197,8 @@ offset_left = -240.0
 offset_right = 240.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_oxywn")
+controller = NodePath("../../NetworkController")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Host"]
 layout_mode = 1
@@ -165,22 +230,31 @@ text = "Port"
 [node name="Address" type="LineEdit" parent="CanvasLayer/Host/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "6969"
 placeholder_text = "6969"
 
-[node name="Button" type="Button" parent="CanvasLayer/Host/VBoxContainer"]
+[node name="Start" type="Button" parent="CanvasLayer/Host/VBoxContainer"]
 layout_mode = 2
-text = "Connect"
+text = "Start"
 
 [node name="Button2" type="Button" parent="CanvasLayer/Host/VBoxContainer"]
 layout_mode = 2
 text = "Cancel
 "
 
-[connection signal="button_up" from="CanvasLayer/Menu/VBoxContainer/Button" to="CanvasLayer/Connect" method="set_visible" binds= [true]]
+[node name="NetworkController" type="Node" parent="." node_paths=PackedStringArray("error_dialogue")]
+script = ExtResource("2_cvy7m")
+server_prefab = ExtResource("3_7xkmv")
+client_prefab = ExtResource("4_dhpoy")
+error_dialogue = NodePath("../CanvasLayer/Error")
+
 [connection signal="button_up" from="CanvasLayer/Menu/VBoxContainer/Button" to="CanvasLayer/Menu" method="set_visible" binds= [false]]
-[connection signal="button_up" from="CanvasLayer/Menu/VBoxContainer/Button2" to="CanvasLayer/Host" method="set_visible" binds= [true]]
+[connection signal="button_up" from="CanvasLayer/Menu/VBoxContainer/Button" to="CanvasLayer/Connect" method="set_visible" binds= [true]]
 [connection signal="button_up" from="CanvasLayer/Menu/VBoxContainer/Button2" to="CanvasLayer/Menu" method="set_visible" binds= [false]]
-[connection signal="button_up" from="CanvasLayer/Connect/VBoxContainer/Button2" to="CanvasLayer/Connect" method="set_visible" binds= [false]]
+[connection signal="button_up" from="CanvasLayer/Menu/VBoxContainer/Button2" to="CanvasLayer/Host" method="set_visible" binds= [true]]
+[connection signal="button_up" from="CanvasLayer/Error/VBoxContainer/Button" to="CanvasLayer/Menu" method="set_visible" binds= [true]]
+[connection signal="button_up" from="CanvasLayer/Error/VBoxContainer/Button" to="CanvasLayer/Error" method="set_visible" binds= [false]]
 [connection signal="button_up" from="CanvasLayer/Connect/VBoxContainer/Button2" to="CanvasLayer/Menu" method="set_visible" binds= [true]]
-[connection signal="button_up" from="CanvasLayer/Host/VBoxContainer/Button2" to="CanvasLayer/Host" method="set_visible" binds= [false]]
+[connection signal="button_up" from="CanvasLayer/Connect/VBoxContainer/Button2" to="CanvasLayer/Connect" method="set_visible" binds= [false]]
 [connection signal="button_up" from="CanvasLayer/Host/VBoxContainer/Button2" to="CanvasLayer/Menu" method="set_visible" binds= [true]]
+[connection signal="button_up" from="CanvasLayer/Host/VBoxContainer/Button2" to="CanvasLayer/Host" method="set_visible" binds= [false]]

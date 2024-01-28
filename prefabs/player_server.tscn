@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c80e516wpyn14"]
+
+[ext_resource type="Script" path="res://scripts/ServerPlayer.gd" id="1_fln2o"]
+[ext_resource type="PackedScene" uid="uid://wlvwewvjudj2" path="res://prefabs/character_server.tscn" id="2_lvvps"]
+
+[node name="ServerPlayer" type="Node"]
+script = ExtResource("1_fln2o")
+server_character_prefab = ExtResource("2_lvvps")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsn4mbcimas2h"]
+
+[ext_resource type="PackedScene" uid="uid://qj1ogb8looh8" path="res://models/bean.blend" id="1_i7yua"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xhckc"]
+radius = 0.191275
+
+[node name="ClientProjectile" type="CharacterBody3D"]
+
+[node name="bean" parent="." instance=ExtResource("1_i7yua")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_xhckc")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8umqx7shwgvq"]
+
+[ext_resource type="Script" path="res://scripts/PlayerRemote.gd" id="1_mnixu"]
+[ext_resource type="PackedScene" uid="uid://cbx355ccjnhby" path="res://prefabs/character_remote.tscn" id="2_k233m"]
+
+[node name="RemotePlayer" type="Node"]
+script = ExtResource("1_mnixu")
+remote_character_prefab = ExtResource("2_k233m")

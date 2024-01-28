@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjke1rly4fgew"]
+
+[ext_resource type="Script" path="res://scripts/NetworkClient.gd" id="1_43opr"]
+[ext_resource type="PackedScene" uid="uid://cjca33npwuuqe" path="res://prefabs/player_local.tscn" id="2_er0qo"]
+[ext_resource type="PackedScene" uid="uid://c8umqx7shwgvq" path="res://prefabs/player_remote.tscn" id="3_hasgr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v3ob3"]
+sky_top_color = Color(0.658824, 0.0627451, 0.854902, 1)
+sky_horizon_color = Color(0.470588, 0.709804, 0.682353, 1)
+
+[sub_resource type="Sky" id="Sky_pfby7"]
+sky_material = SubResource("ProceduralSkyMaterial_v3ob3")
+
+[sub_resource type="Environment" id="Environment_rmr8l"]
+background_mode = 2
+sky = SubResource("Sky_pfby7")
+
+[node name="Game" type="Node"]
+script = ExtResource("1_43opr")
+local_player = ExtResource("2_er0qo")
+remote_player = ExtResource("3_hasgr")
+
+[node name="Players" type="Node" parent="."]
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="DefaultCamera" type="Camera3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+environment = SubResource("Environment_rmr8l")
+current = true

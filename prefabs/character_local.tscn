@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://du1ck56xhg2dj"]
+
+[ext_resource type="Script" path="res://scripts/CharacterLocal.gd" id="1_etuaf"]
+[ext_resource type="PackedScene" uid="uid://by6gw24nk4htc" path="res://models/bean-rifle.blend" id="2_5lkyf"]
+[ext_resource type="PackedScene" uid="uid://bsn4mbcimas2h" path="res://prefabs/projectile_client.tscn" id="2_ubc5y"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_41rs0"]
+
+[sub_resource type="Sky" id="Sky_jp6j4"]
+sky_material = SubResource("ProceduralSkyMaterial_41rs0")
+
+[sub_resource type="Environment" id="Environment_x25va"]
+background_mode = 2
+sky = SubResource("Sky_jp6j4")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7adv7"]
+radius = 0.247341
+height = 1.11712
+
+[node name="Character" type="CharacterBody3D"]
+script = ExtResource("1_etuaf")
+prefab_bean = ExtResource("2_ubc5y")
+
+[node name="FirstPerson" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+environment = SubResource("Environment_x25va")
+current = true
+
+[node name="bean-rifle" parent="FirstPerson" instance=ExtResource("2_5lkyf")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.176, -0.185, -0.17)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.558965, 0)
+shape = SubResource("CapsuleShape3D_7adv7")
