@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqjs3auy0nb25"]
+[gd_scene load_steps=9 format=3 uid="uid://dqjs3auy0nb25"]
 
 [ext_resource type="Script" path="res://scripts/NetworkServer.gd" id="1_r3pky"]
 [ext_resource type="PackedScene" uid="uid://c80e516wpyn14" path="res://prefabs/player_server.tscn" id="2_pn5b4"]
 [ext_resource type="PackedScene" uid="uid://bidpanowj23d2" path="res://prefabs/projectile_server.tscn" id="3_4prke"]
 [ext_resource type="Script" path="res://scripts/ServerCamera.gd" id="3_efqlo"]
+[ext_resource type="Script" path="res://scripts/ProjectileSyncServer.gd" id="5_8uwyr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r3i15"]
 
@@ -30,3 +31,5 @@ current = true
 script = ExtResource("3_efqlo")
 
 [node name="Projectiles" type="Node3D" parent="World"]
+script = ExtResource("5_8uwyr")
+projectile_prefab = ExtResource("3_4prke")

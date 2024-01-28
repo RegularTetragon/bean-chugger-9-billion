@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjke1rly4fgew"]
+[gd_scene load_steps=9 format=3 uid="uid://cjke1rly4fgew"]
 
 [ext_resource type="Script" path="res://scripts/NetworkClient.gd" id="1_43opr"]
 [ext_resource type="PackedScene" uid="uid://cjca33npwuuqe" path="res://prefabs/player_local.tscn" id="2_er0qo"]
 [ext_resource type="PackedScene" uid="uid://c8umqx7shwgvq" path="res://prefabs/player_remote.tscn" id="3_hasgr"]
 [ext_resource type="PackedScene" uid="uid://bsn4mbcimas2h" path="res://prefabs/projectile_client.tscn" id="4_x1kym"]
+[ext_resource type="Script" path="res://prefabs/ProjectileSyncClient.gd" id="5_j1au3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v3ob3"]
 sky_top_color = Color(0.658824, 0.0627451, 0.854902, 1)
@@ -32,3 +33,5 @@ environment = SubResource("Environment_rmr8l")
 current = true
 
 [node name="Projectiles" type="Node3D" parent="World"]
+script = ExtResource("5_j1au3")
+projectile_prefab = ExtResource("4_x1kym")

@@ -9,7 +9,7 @@ var client : NetworkClient
 @rpc("authority", "reliable")
 func spawn_character(position):
 	character = local_character_prefab.instantiate()
-	character.global_position = position
+	character.position = position
 	character.player = self
 	character.name = "Character" + str(peer_id)
 	client.get_node("World").add_child(character)

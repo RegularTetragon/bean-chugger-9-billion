@@ -7,7 +7,7 @@ var shooting = false
 var shot_timer = 0
 var health = 100
 
-const shot_time = 0.05
+const shot_time = 0.025
 @export var prefab_bean : PackedScene
 
 func _ready():
@@ -19,12 +19,12 @@ func _process(delta):
 		if shot_timer <= 0:
 			shot_timer = shot_time
 			var angle = randf() * TAU
-			var radius = randf() * 0.5
+			var radius = randf() * 1
 			var dir = (Vector3(radius * cos(angle), radius * sin(angle), -10)
 					.rotated(Vector3.RIGHT, yrot)
 					.rotated(Vector3.UP, xrot)
 					.normalized())
-			player.server.spawn_projectile(global_position + Vector3.UP * 1 + dir, 
+			player.server.projectiles.spawn_projectile(global_position + Vector3.UP * 1 + dir, 
 				dir*50)
 			shoot_sound.rpc()
 	if global_position.y <= -100:

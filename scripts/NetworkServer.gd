@@ -5,9 +5,11 @@ var network : NetworkController
 @export var projectile_prefab : PackedScene
 var current_level : Node3D
 var current_level_name : String
+var projectiles : ProjectileSyncServer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	projectiles = $World/Projectiles
 	print("Server ready")
 	multiplayer.peer_connected.connect(peer_connected)
 	multiplayer.peer_disconnected.connect(peer_disconnected)
@@ -23,11 +25,8 @@ func peer_connected(id):
 	for player : PlayerServer in $Players.get_children():
 		s2c_sync_player(player.peer_id)
 		if is_instance_valid(player.character):
-			player.spawn_character.rpc_id(id)
+			player.spawn_character.rpc_id(id, player.character.global_position)
 	
-	for projectile : RigidBody3D in $World/Projectiles.get_children():
-		s2c_sync_projectile.rpc_id(id, projectile.get_instance_id(), projectile.global_position, projectile.linear_velocity)
-
 	$Players.add_child(client)
 	set_map.rpc_id(id, current_level_name)
 
@@ -49,20 +48,6 @@ func set_map(map_name: String):
 
 @rpc("reliable", "authority")
 func s2c_sync_player(id):
-	pass
-	
-func spawn_projectile(position, velocity):
-	var bean = projectile_prefab.instantiate()
-	bean.name = "Projectile" + str(bean.get_instance_id())
-	$World/Projectiles.add_child(bean)
-	bean.global_position = position
-	bean.linear_velocity = velocity
-
-	s2c_sync_projectile.rpc(bean.get_instance_id(), position, velocity)
-
-
-@rpc("reliable", "authority")
-func s2c_sync_projectile(id, position, velocity):
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

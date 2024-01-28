@@ -50,7 +50,7 @@ bones/18/scale = Vector3(1, 1, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.135361, 0)
 
 [node name="RightHand" type="BoneAttachment3D" parent="ThirdPerson/Armature/Skeleton3D" index="1"]
-transform = Transform3D(5.63887e-08, 1, -1.37836e-07, -0.759699, 2.12342e-07, 0.650274, 0.650274, -3.72529e-08, 0.759699, 0.602979, 0.769852, -0.0190297)
+transform = Transform3D(9.66975e-07, 1, -7.26432e-07, -0.7597, 1.27032e-06, 0.650274, 0.650274, -1.11759e-07, 0.7597, 0.602979, 0.769853, -0.0190297)
 bone_name = "hand.r"
 bone_idx = 10
 

@@ -60,15 +60,6 @@ func set_map(map_name: String):
 func s2c_sync_player(id):
 	peer_connected(id)
 
-@rpc("reliable", "authority")
-func s2c_sync_projectile(id, position, velocity):
-	var bean = projectile_prefab.instantiate()
-	bean.name = "Projectile" + str(id)
-	$World/Projectiles.add_child(bean)
-	bean.global_position = position
-	bean.linear_velocity = velocity
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

@@ -9,7 +9,7 @@
 radius = 0.247341
 height = 1.11712
 
-[sub_resource type="Animation" id="Animation_1ognm"]
+[sub_resource type="Animation" id="Animation_rie1t"]
 resource_name = "Bloat"
 length = 2.0
 tracks/0/type = "rotation_3d"
@@ -111,7 +111,7 @@ tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = PackedFloat32Array(0, 1, -0.0136392, -4.65948e-08, -0.0205424, 0.999696)
 
-[sub_resource type="Animation" id="Animation_rtdxn"]
+[sub_resource type="Animation" id="Animation_agofk"]
 resource_name = "Idleloop"
 loop_mode = 1
 tracks/0/type = "rotation_3d"
@@ -213,7 +213,7 @@ tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = PackedFloat32Array(0, 1, -0.0136392, -4.65948e-08, -0.0205424, 0.999696)
 
-[sub_resource type="Animation" id="Animation_m5k3n"]
+[sub_resource type="Animation" id="Animation_l2omw"]
 resource_name = "Runloop"
 loop_mode = 1
 tracks/0/type = "position_3d"
@@ -315,7 +315,7 @@ tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = PackedFloat32Array(0, 1, 0.465052, -0.0611784, -0.0415676, 0.882188, 0.0333333, 1, 0.465052, -0.0611784, -0.0415676, 0.882188, 0.0666667, 1, 0.448995, -0.0591343, -0.039398, 0.890704, 0.1, 1, 0.421453, -0.0556265, -0.035693, 0.904439, 0.133333, 1, 0.385091, -0.0509926, -0.0308321, 0.920953, 0.166667, 1, 0.340734, -0.0453356, -0.0249469, 0.938735, 0.2, 1, 0.288453, -0.0386627, -0.0180698, 0.956542, 0.233333, 1, 0.232421, -0.0315046, -0.0107667, 0.972045, 0.266667, 1, 0.174618, -0.0241138, -0.00330251, 0.984336, 0.3, 1, 0.117155, -0.0167602, 0.00405006, 0.992964, 0.333333, 1, 0.0622079, -0.00972296, 0.0110193, 0.997955, 0.366667, 1, 0.0145225, -0.00361124, 0.0170196, 0.999743, 0.4, 1, -0.0253389, 0.00150085, 0.0220014, 0.999436, 0.433333, 1, -0.0560204, 0.0054376, 0.0258149, 0.998081, 0.466667, 1, -0.0762645, 0.00803607, 0.028321, 0.996653, 0.533333, 1, -0.0762645, 0.00803606, 0.028321, 0.996653, 0.566667, 1, -0.0560204, 0.0054376, 0.0258149, 0.998081, 0.6, 1, -0.0253389, 0.00150085, 0.0220014, 0.999436, 0.633333, 1, 0.0145225, -0.00361124, 0.0170196, 0.999743, 0.666667, 1, 0.0622079, -0.00972295, 0.0110193, 0.997955, 0.7, 1, 0.117155, -0.0167602, 0.00405006, 0.992964, 0.733333, 1, 0.174618, -0.0241138, -0.00330251, 0.984336, 0.766667, 1, 0.232421, -0.0315046, -0.0107667, 0.972045, 0.8, 1, 0.288453, -0.0386627, -0.0180698, 0.956542, 0.833333, 1, 0.340734, -0.0453356, -0.0249469, 0.938735, 0.866667, 1, 0.385092, -0.0509926, -0.0308321, 0.920953, 0.9, 1, 0.421453, -0.0556265, -0.035693, 0.904438, 0.933333, 1, 0.448995, -0.0591342, -0.039398, 0.890704, 0.966667, 1, 0.466955, -0.0614206, -0.0418251, 0.881153, 1, 1, 0.474544, -0.0623864, -0.0428535, 0.876972)
 
-[sub_resource type="Animation" id="Animation_3qws0"]
+[sub_resource type="Animation" id="Animation_t47em"]
 resource_name = "VerticalLook"
 length = 2.0
 tracks/0/type = "rotation_3d"
@@ -417,12 +417,12 @@ tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = PackedFloat32Array(0, 1, -0.0136392, -4.65948e-08, -0.0205424, 0.999696)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ykpii"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dh5ae"]
 _data = {
-"Bloat": SubResource("Animation_1ognm"),
-"Idleloop": SubResource("Animation_rtdxn"),
-"Runloop": SubResource("Animation_m5k3n"),
-"VerticalLook": SubResource("Animation_3qws0")
+"Bloat": SubResource("Animation_rie1t"),
+"Idleloop": SubResource("Animation_agofk"),
+"Runloop": SubResource("Animation_l2omw"),
+"VerticalLook": SubResource("Animation_t47em")
 }
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_cw30f"]
@@ -494,14 +494,15 @@ script = ExtResource("1_ixrdc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.205, 0)
 
 [node name="Skeleton3D" parent="ThirdPerson/Armature" index="0"]
-bones/2/rotation = Quaternion(-0.102802, 0.0246361, -0.0103119, 0.994343)
-bones/3/rotation = Quaternion(-0.428742, -0.0901077, 0.718518, 0.540179)
+bones/1/rotation = Quaternion(-0.381708, 0, 0, 0.924283)
+bones/2/rotation = Quaternion(-0.474603, 0.0188347, -0.0189377, 0.879795)
+bones/3/rotation = Quaternion(-0.602536, 0.190719, 0.698512, 0.335645)
 bones/4/rotation = Quaternion(-0.560852, 0.426146, -0.277834, 0.653187)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/rotation = Quaternion(0.22162, 0.863961, 0.434481, 0.125231)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/rotation = Quaternion(0.0269438, 7.39082e-08, 0.0447525, 0.998635)
-bones/7/rotation = Quaternion(-0.438833, -0.00715905, -0.668925, 0.599928)
+bones/7/rotation = Quaternion(-0.634667, -0.261957, -0.615508, 0.386946)
 bones/8/rotation = Quaternion(-0.223671, -0.325816, 0.502818, 0.768758)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/rotation = Quaternion(0.129885, 0.813057, 0.0331431, 0.566542)
@@ -528,7 +529,7 @@ bones/18/scale = Vector3(1, 1, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.135361, 0)
 
 [node name="RightHand" type="BoneAttachment3D" parent="ThirdPerson/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.649708, 0.0817429, 0.755776, -0.754005, 0.0572076, -0.654373, -0.0967263, -0.995011, 0.0244663, 0.138851, 0.834931, -0.52806)
+transform = Transform3D(-0.649702, 0.0816324, 0.755793, -0.0997316, -0.994778, 0.0217125, 0.753618, -0.0612699, 0.654451, 0.138793, 0.20586, -0.253114)
 bone_name = "hand.r"
 bone_idx = 10
 
@@ -550,7 +551,7 @@ stream = ExtResource("4_b8v5i")
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../ThirdPerson")
 libraries = {
-"": SubResource("AnimationLibrary_ykpii")
+"": SubResource("AnimationLibrary_dh5ae")
 }
 tree_root = SubResource("AnimationNodeBlendTree_gb6h4")
 anim_player = NodePath("../ThirdPerson/AnimationPlayer")
