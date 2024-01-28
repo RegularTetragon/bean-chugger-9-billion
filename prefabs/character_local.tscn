@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://du1ck56xhg2dj"]
+[gd_scene load_steps=10 format=3 uid="uid://du1ck56xhg2dj"]
 
 [ext_resource type="Script" path="res://scripts/CharacterLocal.gd" id="1_etuaf"]
 [ext_resource type="PackedScene" uid="uid://by6gw24nk4htc" path="res://models/bean-rifle.blend" id="2_5lkyf"]
 [ext_resource type="PackedScene" uid="uid://bsn4mbcimas2h" path="res://prefabs/projectile_client.tscn" id="2_ubc5y"]
+[ext_resource type="AudioStream" uid="uid://b83jrahaj43f4" path="res://sound/shoot-2.ogg" id="4_xj8eg"]
+[ext_resource type="AudioStream" uid="uid://f48f4iuigce5" path="res://sound/death.ogg" id="5_vqt4s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_41rs0"]
 
@@ -32,3 +34,11 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.176,
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.558965, 0)
 shape = SubResource("CapsuleShape3D_7adv7")
+
+[node name="ShootSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+stream = ExtResource("4_xj8eg")
+
+[node name="DiedSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+stream = ExtResource("5_vqt4s")

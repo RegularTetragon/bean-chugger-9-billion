@@ -7,8 +7,9 @@ var peer_id : int
 var client : NetworkClient
 
 @rpc("authority", "reliable")
-func spawn_character():
+func spawn_character(position):
 	character = remote_character_prefab.instantiate()
+	character.global_position = position
 	character.name = "Character" + str(peer_id)
 	client.get_node("World").add_child(character)
 

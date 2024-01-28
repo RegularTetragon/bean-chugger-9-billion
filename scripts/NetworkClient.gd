@@ -64,10 +64,10 @@ func s2c_sync_player(id):
 func s2c_sync_projectile(id, position, velocity):
 	var bean = projectile_prefab.instantiate()
 	bean.name = "Projectile" + str(id)
-
+	$World/Projectiles.add_child(bean)
 	bean.global_position = position
 	bean.linear_velocity = velocity
-	$World/Projectiles.add_child(bean)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

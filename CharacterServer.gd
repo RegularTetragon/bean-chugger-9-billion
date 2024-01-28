@@ -26,6 +26,9 @@ func _process(delta):
 					.normalized())
 			player.server.spawn_projectile(global_position + Vector3.UP * 1 + dir, 
 				dir*50)
+			shoot_sound.rpc()
+	if global_position.y <= -100:
+		damage(1000000)
 	
 @rpc("unreliable_ordered", "call_remote", "any_peer")
 func sync_move(global_position, animation, xrot, yrot):
@@ -53,10 +56,14 @@ func end_shoot():
 	if multiplayer.get_remote_sender_id() == player.peer_id:
 		end_shoot.rpc()
 
+@rpc("unreliable", "authority")
+func shoot_sound():
+	pass
+
 func damage(amount):
 	print(amount, health)
 	health -= amount
-	sync_health.rpc_id(player.peer_id, health)
+	sync_health.rpc(health)
 	if health <= 0:
 		sync_died.rpc()
 		queue_free()

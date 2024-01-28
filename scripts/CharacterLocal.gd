@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
+const SPEED = 10.0
 const JUMP_VELOCITY = 4.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -66,8 +66,16 @@ func end_shoot():
 
 @rpc("reliable", "authority")		
 func sync_died():
+	var sound = $DiedSound
+	remove_child(sound)
+	player.client.current_level.add_child(sound)
+	sound.global_position = global_position
+	sound.play()
 	queue_free()
-
+	
+@rpc("unreliable", "authority")
+func shoot_sound():
+	$ShootSound.play()
 
 @rpc("reliable", "authority")
 func sync_health(health):

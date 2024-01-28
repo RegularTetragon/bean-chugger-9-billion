@@ -12,7 +12,8 @@ func sync_move(global_position, animation, xrot, yrot):
 	self.xrot = xrot
 	self.yrot = yrot
 	self.rotation = Vector3(0, self.xrot, 0)
-	$ThirdPerson/AnimationPlayer.play(animation)
+	$AnimationTree.set("parameters/XLook/seek_request", 2 * (yrot + PI/2) / PI)
+	$AnimationTree.set("parameters/Transition/transition_request", animation)
 
 
 @rpc("reliable", "call_remote")
@@ -23,10 +24,17 @@ func begin_shoot():
 func end_shoot():
 	pass
 
+@rpc("unreliable", "authority")
+func shoot_sound():
+	$ShootSound.play()
+
 @rpc("reliable", "authority")		
 func sync_died():
 	queue_free()
 
 @rpc("reliable", "authority")
 func sync_health(health):
-	pass
+
+	var time = 2 * (1 - float(health) / 100)
+	print("health", health, "time", time)
+	$AnimationTree.set("parameters/Bloat/seek_request", time)
